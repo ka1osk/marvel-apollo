@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { Container, GlobalStyles } from "Styles";
+import Routes from "Routes";
+import Api from "services/Api";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={Api}>
+      <BrowserRouter>
+        <Container>
+          <GlobalStyles />
+          <Routes />
+        </Container>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 
